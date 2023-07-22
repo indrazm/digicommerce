@@ -1,7 +1,9 @@
 import "@/styles/globals.css";
 import { DM_Sans } from "next/font/google";
+import { WebTemplate } from "@/components/templates/WebTemplate";
+import { ToastProvider } from "@/components/provider/ToastProvider";
 
-const dmsans = DM_Sans({ subsets: ["latin"] });
+const dmsans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata = {
    title: "Create Next App",
@@ -11,7 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
    return (
       <html lang="en">
-         <body className={dmsans.className}>{children}</body>
+         <body className={dmsans.className}>
+            <ToastProvider>
+               <WebTemplate>{children}</WebTemplate>
+            </ToastProvider>
+         </body>
       </html>
    );
 }

@@ -2,27 +2,13 @@
 ### Get All Comments
 GET http://localhost:3000/api/v1/comment
 
-### Get Comment by ID : /comment?userId=userId
-GET http://localhost:3000/api/v1/comment?userId=userId
-
 ### Create Comment
 POST http://localhost:3000/api/v1/comment
 Content-Type: application/json
 
 {
-   userId: "name",
-   body: "comment"
-   productId: ""
+   "userId": "clke101t50000rcvk6be0pqf2",
+   "body": "Hey it's good!!!",
+   "productId": "clke2t14x000crc8bqt15scna"
 }
 
-### Edit by ID : /category/:id
-PATCH  http://localhost:3000/api/v1/comment/1
-Content-Type: application/json
-
-{
-   body: "comment",
-}
-
-### Delete by ID : /category/:id
-
-DELETE http://localhost:3000/api/v1/comment/1

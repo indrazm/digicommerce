@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/prisma";
 import { NextResponse } from "next/server";
+import { generateHash } from "@/lib/auth/bcrypt";
 
 export async function GET(req) {
    const { searchParams } = new URL(req.url);
@@ -26,11 +27,13 @@ export async function GET(req) {
 
 export async function POST(req) {
    const { email, password, name } = await req.json();
+
    try {
+      const hashedPassword = await generateHash(password);
       const createUser = await prisma.user.create({
          data: {
             email,
-            password,
+            password: hashedPassword,
             name,
          },
       });

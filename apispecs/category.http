@@ -10,7 +10,7 @@ POST http://localhost:3000/api/v1/category
 Content-Type: application/json
 
 {
-   name: "name",
+   "name": "illustration"
 }
 
 ### Edit by ID : /category/:id
@@ -18,7 +18,7 @@ PATCH  http://localhost:3000/api/v1/category/1
 Content-Type: application/json
 
 {
-   name: "name",
+   "name": "name",
 }
 
 ### Delete by ID : /category/:id

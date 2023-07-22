@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+   h1 {
+      @apply text-5xl font-semibold tracking-tighter mb-4 text-white;
+   }
+   h2 {
+      @apply text-4xl font-semibold tracking-tighter  text-white;
+   }
+   h4 {
+      @apply text-lg;
+   }
+   input {
+      @apply block w-full input input-bordered placeholder:text-zinc-700;
+   }
+   button {
+      @apply block w-full btn mt-6;
+   }
+}

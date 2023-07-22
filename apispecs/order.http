@@ -3,13 +3,13 @@
 GET http://localhost:3000/api/v1/order/
 
 ### Get Order by ID : /order/:id
-GET http://localhost:3000/api/v1/order/1
+GET http://localhost:3000/api/v1/order/clke32yaa000grc8bfwyjgy3k
 
 ### Create Order
 POST http://localhost:3000/api/v1/order
 Content-Type: application/json
 
 {
-   userId: "id",
-   productId: "productId"
+   "userId": "clke101t50000rcvk6be0pqf2",
+   "productId": "clke2t14x000crc8bqt15scna"
 }
