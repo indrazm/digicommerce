@@ -1,6 +1,9 @@
 
 ### Get All Products
-GET http://localhost:3000/api/v1/product/
+GET http://localhost:3000/api/v1/product
+
+### Get Products by userId
+GET http://localhost:3000/api/v1/product?userId=clke101t50000rcvk6be0pqf2
 
 ### Get Product by ID : /product/:id
 GET http://localhost:3000/api/v1/product/clke2t14x000crc8bqt15scna
@@ -13,7 +16,6 @@ Content-Type: application/json
    "name": "name",
    "description": "description",
    "price": 20,
-   "highlights": "" ,
    "images": "[]",
    "categoryId": "clke2pk240002rc8bzx6o82kz",
    "userId": "clke101t50000rcvk6be0pqf2"

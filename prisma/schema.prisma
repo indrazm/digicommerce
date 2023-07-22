@@ -28,7 +28,6 @@ model Product {
   name        String
   description String
   price       Int
-  highlights  String
   images      String
   isDeleted   Boolean    @default(false)
   categoryId  String
