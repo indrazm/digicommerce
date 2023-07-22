@@ -1,0 +1,38 @@
+
+### Get All Products
+GET http://localhost:3000/api/v1/product/
+
+### Get Product by ID : /product/:id
+GET http://localhost:3000/api/v1/product/1
+
+### Create Product
+POST http://localhost:3000/api/v1/product
+Content-Type: application/json
+
+{
+   name: "name",
+   description: "description"
+   price: 20
+   highlights: "" 
+   images: "[]"
+   categoryId: null
+   userId: null
+}
+
+### Edit Product by ID : /product/:id
+PATCH  http://localhost:3000/api/v1/product/1
+Content-Type: application/json
+
+{
+   name: "name",
+   description: "description"
+   price: 20
+   highlights: "" 
+   images: "[]"
+   categoryId: null
+   userId: null
+}
+
+### Delete Product by ID : /product/:id
+
+DELETE http://localhost:3000/api/v1/product/1

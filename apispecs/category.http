@@ -1,0 +1,26 @@
+
+### Get Category All 
+GET http://localhost:3000/api/v1/category/
+
+### Get Category by ID : /category/:id
+GET http://localhost:3000/api/v1/category/1
+
+### Create Category
+POST http://localhost:3000/api/v1/category
+Content-Type: application/json
+
+{
+   name: "name",
+}
+
+### Edit by ID : /category/:id
+PATCH  http://localhost:3000/api/v1/category/1
+Content-Type: application/json
+
+{
+   name: "name",
+}
+
+### Delete by ID : /category/:id
+
+DELETE http://localhost:3000/api/v1/category/1

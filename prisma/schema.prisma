@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id       String     @id @default(cuid())
+  email    String
+  name     String
+  password String
+  bio      String
+  active   Boolean    @default(true)
+  products Product[]
+  comments Comments[]
+  orders   Order[]
+}
+
+model Product {
+  id          String     @id @default(cuid())
+  name        String
+  description String
+  price       Int
+  highlights  String
+  images      String
+  isDeleted   Boolean    @default(false)
+  categoryId  String
+  category    Category   @relation(references: [id], fields: [categoryId])
+  userId      String
+  user        User       @relation(references: [id], fields: [userId])
+  orders      Order[]
+  comments    Comments[]
+
+  @@index([categoryId])
+  @@index([userId])
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  products Product[]
+}
+
+model Comments {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(references: [id], fields: [userId])
+  body      String
+  isDeleted Boolean @default(false)
+  productId String
+  product   Product @relation(references: [id], fields: [productId])
+
+  @@index([userId])
+  @@index([productId])
+}
+
+model Order {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(references: [id], fields: [userId])
+  productId String
+  product   Product @relation(references: [id], fields: [productId])
+
+  @@index([userId])
+  @@index([productId])
+}
