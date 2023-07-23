@@ -5,9 +5,10 @@ async function getAllProducts() {
    const res = await fetch(`${API_URL}/product`, {
       cache: "no-store",
    });
-   const data = res.json();
+   const data = await res.json();
    return data;
 }
+
 export default async function Page() {
    const { data: productsData } = await getAllProducts();
 
