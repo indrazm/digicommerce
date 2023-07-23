@@ -17,7 +17,13 @@ export const uploadFile = (file, folder) => {
       Body: file,
    };
 
-   S3.upload(S3Params, (err, data) => {
-      console.log(err, data);
+   return new Promise((resolve, reject) => {
+      S3.upload(S3Params, (err, data) => {
+         if (err) {
+            reject(err);
+         } else {
+            resolve(data);
+         }
+      });
    });
 };

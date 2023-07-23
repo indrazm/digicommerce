@@ -1,11 +1,11 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { downloadFile } from "@/lib/s3/downloadFile";
 import Link from "next/link";
 
-export const ProductCard = ({ id, name, price, featuredImage }) => {
+export const ProductCard = ({ id, slug, name, price, featuredImage }) => {
    const [img, setImg] = useState("");
    console.log(img);
 
@@ -19,7 +19,7 @@ export const ProductCard = ({ id, name, price, featuredImage }) => {
    }, [featuredImage]);
 
    return (
-      <Link href={"/product/" + id}>
+      <Link href={"/product/" + slug}>
          <div className="card bg-zinc-900 card-bordered">
             <div className="relative">
                {img && <Image src={img} width={600} height={200} quality={50} alt={name} className="h-[260px] object-cover rounded-t-xl" />}

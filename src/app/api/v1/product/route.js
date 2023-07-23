@@ -23,7 +23,7 @@ export async function POST(req) {
          data: {
             name,
             shortDescription,
-            slug: slugify(name),
+            slug: slugify(name, { lower: true, strict: true }),
             overview,
             file,
             price: Number(price),
@@ -35,7 +35,6 @@ export async function POST(req) {
       });
       return NextResponse.json({ data: createProduct }, { status: 201 });
    } catch (error) {
-      console.log(error);
-      return NextResponse.json({ data: error }, { status: error.status });
+      return NextResponse.json({ error }, { status: error.status });
    }
 }

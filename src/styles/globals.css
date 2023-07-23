@@ -28,6 +28,6 @@
       @apply block w-full select select-bordered placeholder:text-zinc-700;
    }
    button {
-      @apply block w-full btn;
+      @apply block w-full btn disabled:btn-disabled;
    }
 }

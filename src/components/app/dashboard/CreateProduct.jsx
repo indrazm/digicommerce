@@ -23,7 +23,7 @@ export const CreateProduct = ({ categoryData = [] }) => {
    };
 
    const handleSubmitCreateProduct = async () => {
-      // setLoading(true);
+      setLoading(true);
       const { name, shortDescription, overview, price, categoryId } = productData;
       const user = localStorage.getItem("user_record");
       const userId = JSON.parse(user).id;
@@ -48,27 +48,34 @@ export const CreateProduct = ({ categoryData = [] }) => {
          }),
       });
 
-      const { data } = await res.json();
-      if (data) {
-         const { id } = data;
+      const { data, error } = await res.json();
 
-         try {
-            //Upload Single Featured Image
-            uploadFile(featuredImageFile[0], id);
+      if (error) {
+         toast.error("Error creating product");
+         console.log(error);
+         return;
+      }
 
-            //Upload ProductImages
-            for (let i = 0; i < productImageFiles.length; i++) {
-               uploadFile(productImageFiles[i], id);
-            }
-         } catch (err) {
-            console.log(err);
-         } finally {
-            setLoading(false);
-            toast.success("Creating Product Success...");
-            console.log(data);
-            router.refresh();
-            router.push("/dashboard/products");
+      const { id } = data;
+
+      try {
+         //Upload Single Featured Image
+         await uploadFile(featuredImageFile[0], id);
+
+         //Upload ProductImages
+         for (let i = 0; i < productImageFiles.length; i++) {
+            await uploadFile(productImageFiles[i], id);
          }
+
+         setLoading(false);
+         toast.success("Creating Product Success...");
+         console.log(data);
+         router.refresh();
+         router.push("/dashboard/products");
+      } catch (err) {
+         console.log(err);
+         setLoading(false);
+         toast.error("Error creating product..");
       }
    };
 

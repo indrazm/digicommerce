@@ -12,8 +12,8 @@ export const Home = ({ productsData = [] }) => {
          </section>
          <Suspense fallback={<div>Loading...</div>}>
             <section className="grid grid-cols-3 gap-8">
-               {productsData.map(({ id, name, price, images }) => {
-                  return <ProductCard id={id} name={name} price={price} image={images} />;
+               {productsData.map(({ id, slug, name, price, featuredImage }) => {
+                  return <ProductCard slug={slug} key={id} id={id} name={name} price={price} featuredImage={featuredImage} />;
                })}
             </section>
          </Suspense>

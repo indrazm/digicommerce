@@ -31,9 +31,6 @@ export async function POST(req) {
          };
 
          token = generateJWT(record);
-      } else {
-         record = null;
-         token = null;
       }
 
       return NextResponse.json({ record, token }, { status: 200 });

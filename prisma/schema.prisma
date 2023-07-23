@@ -28,7 +28,7 @@ model Product {
   name             String
   slug             String     @unique
   shortDescription String
-  overview         String
+  overview         String     @db.Text
   price            Int
   featuredImage    String
   file             String
@@ -43,6 +43,7 @@ model Product {
 
   @@index([categoryId])
   @@index([userId])
+  @@index([slug])
 }
 
 model Category {
