@@ -1,6 +1,7 @@
 import { API_URL } from "@/constants/apiUrl";
 import { cookies } from "next/headers";
 import { AllProducts } from "@/components/app/product/AllProducts";
+import Link from "next/link";
 
 async function getAllProductByUserId(userId) {
    const res = await fetch(`${API_URL}/product?userId=${userId}`);
@@ -17,7 +18,9 @@ export default async function Page() {
       <main className="space-y-12">
          <div className="flex justify-between items-center ">
             <h3>All Products</h3>
-            <button className="w-[200px] btn-primary">Create product</button>
+            <Link href="/dashboard/products/create-product">
+               <button className="w-[200px] btn-primary">Create product</button>
+            </Link>
          </div>
          <AllProducts productsData={productsData} />
       </main>

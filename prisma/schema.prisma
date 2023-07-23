@@ -13,29 +13,33 @@ datasource db {
 
 model User {
   id       String     @id @default(cuid())
-  email    String @unique
+  email    String     @unique
   name     String
   password String
   bio      String?
-  active   Boolean?    @default(true)
+  active   Boolean?   @default(true)
   products Product[]
   comments Comments[]
   orders   Order[]
 }
 
 model Product {
-  id          String     @id @default(cuid())
-  name        String
-  description String
-  price       Int
-  images      String
-  isDeleted   Boolean    @default(false)
-  categoryId  String
-  category    Category   @relation(references: [id], fields: [categoryId])
-  userId      String
-  user        User       @relation(references: [id], fields: [userId])
-  orders      Order[]
-  comments    Comments[]
+  id               String     @id @default(cuid())
+  name             String
+  slug             String     @unique
+  shortDescription String
+  overview         String
+  price            Int
+  featuredImage    String
+  file             String
+  images           String?
+  isDeleted        Boolean    @default(false)
+  categoryId       String
+  category         Category   @relation(references: [id], fields: [categoryId])
+  userId           String
+  user             User       @relation(references: [id], fields: [userId])
+  orders           Order[]
+  comments         Comments[]
 
   @@index([categoryId])
   @@index([userId])

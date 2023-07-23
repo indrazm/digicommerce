@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const menu = [
@@ -13,7 +14,11 @@ export const DashboardTemplate = ({ children }) => {
             <div className="font-bold">eCommerce</div>
             <div>
                {menu.map((item) => {
-                  return <div className="p-3 hover:bg-primary cursor-pointer rounded-btn">{item.label}</div>;
+                  return (
+                     <Link href={item.route}>
+                        <div className="p-3 hover:bg-primary cursor-pointer rounded-btn">{item.label}</div>
+                     </Link>
+                  );
                })}
             </div>
          </aside>
