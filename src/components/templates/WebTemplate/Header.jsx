@@ -1,20 +1,24 @@
 import React from "react";
 import { UserHeader } from "@/components/user/userHeader";
-import { Bag2 } from "iconsax-react";
+import { UserCart } from "@/components/user/UserCart";
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "../../../../public/digicommer-logo.svg";
 
 export const Header = () => {
    return (
-      <header className="flex justify-between p-8">
-         <nav className="flex gap-6">
+      <header className="flex items-center justify-between p-8">
+         <nav className="flex items-center gap-12">
+            <Link href="/">
+               <Image alt="Logo" src={Logo} width={160} />
+            </Link>
             <Link href="/">
                <div>All Products</div>
             </Link>
-            <div>Browse</div>
          </nav>
-         <div className="flex gap-4">
+         <div className="flex gap-12">
             <UserHeader />
-            <Bag2 />
+            <UserCart />
          </div>
       </header>
    );

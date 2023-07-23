@@ -3,15 +3,28 @@ import { NextResponse } from "next/server";
 import slugify from "slugify";
 
 export async function GET(req) {
+   const { searchParams } = new URL(req.url);
+   const productId = searchParams.get("id");
+   let productData;
+
    try {
-      const allProducts = await prisma.product.findMany({
-         include: {
-            category: true,
-         },
-      });
-      return NextResponse.json({ data: allProducts }, { status: 200 });
+      if (productId) {
+         productData = await prisma.product.findUnique({
+            where: {
+               id: productId,
+            },
+         });
+      } else {
+         productData = await prisma.product.findMany({
+            include: {
+               category: true,
+            },
+         });
+      }
+
+      return NextResponse.json({ data: productData }, { status: 200 });
    } catch (error) {
-      return NextResponse.json({ data: error }, { status: error.status });
+      return NextResponse.json({ error }, { status: error.status });
    }
 }
 
