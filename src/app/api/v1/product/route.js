@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/prisma";
 import { NextResponse } from "next/server";
+import slugify from "slugify";
 
 export async function GET(req) {
    try {
@@ -15,14 +16,18 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-   const { name, description, price, images, categoryId, userId } = await req.json();
+   const { name, shortDescription, overview, price, file, categoryId, featuredImage, images, userId } = await req.json();
 
    try {
       const createProduct = await prisma.product.create({
          data: {
             name,
-            description,
+            shortDescription,
+            slug: slugify(name),
+            overview,
+            file,
             price: Number(price),
+            featuredImage,
             images,
             categoryId,
             userId,

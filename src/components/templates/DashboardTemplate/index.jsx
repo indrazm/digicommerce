@@ -11,7 +11,9 @@ export const DashboardTemplate = ({ children }) => {
    return (
       <div className="h-screen flex gap-12">
          <aside className="w-[260px] border-r-2 bg-zinc-900 border-zinc-800 p-8 space-y-12">
-            <div className="font-bold">eCommerce</div>
+            <Link href="/">
+               <div className="font-bold">eCommerce</div>
+            </Link>
             <div>
                {menu.map((item) => {
                   return (
